@@ -2,6 +2,7 @@ import yaml
 import os
 import yaml
 import os
+import json
 
 ####################################
 
@@ -21,8 +22,54 @@ def clear_data_file(data_file):
     except Exception as e:
         print(f"Error clearing data file: {e}")
 
-
 ####################################
+# JSON DATA HANDLING FUNCTIONS
+####################################
+
+def load_dict_data(data_file):
+    """Load stored dict data from the JSON file."""
+    try:
+        if os.path.exists(data_file):
+            with open(data_file, "r", encoding="utf-8") as f:
+                return json.load(f)
+        return {}
+    except Exception as e:
+        print(f"Error loading JSON file: {e}")
+        return {}
+
+def save_dict_data(data, data_file):
+    """Save dict data to the JSON file."""
+    try:
+        with open(data_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Error saving JSON file: {e}")
+
+def compare_and_update(current_data, stored_data):
+    """
+    Compare current and stored dicts.
+    Update stored_data with any new or changed entries.
+    Returns: (updated: bool, updated_data: dict)
+    """
+    updated = False
+
+    for ano, texto in current_data.items():
+        if ano not in stored_data or stored_data[ano] != texto:
+            print(f"[INFO] Ano {ano} atualizado: '{stored_data.get(ano)}' → '{texto}'")
+            stored_data[ano] = texto
+            updated = True
+
+    return updated, stored_data
+
+def clear_data_file(data_file):
+    """Clear the JSON data file."""
+    try:
+        with open(data_file, "w", encoding="utf-8") as f:
+            f.write("")  # limpa o conteúdo
+    except Exception as e:
+        print(f"Error clearing data file: {e}")
+
+
 
 #  STRING DATA HANDLING FUNCTIONS
 
