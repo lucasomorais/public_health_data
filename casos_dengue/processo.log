@@ -1,0 +1,16 @@
+2025-06-05 17:24:43,392 [INFO] Iniciando verificação...
+
+2025-06-05 17:24:44,810 [INFO] Acessando página: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def
+2025-06-05 17:24:44,928 [INFO] Novos dados detectados para anos: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+2025-06-05 17:25:37,229 [INFO] Iniciando verificação...
+
+2025-06-05 17:25:38,747 [INFO] Acessando página: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def
+2025-06-05 17:25:38,859 [INFO] Novos dados detectados para anos: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+2025-06-05 17:26:58,751 [INFO] Iniciando verificação...
+
+2025-06-05 17:27:00,315 [INFO] Acessando página: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def
+2025-06-05 17:27:00,424 [INFO] Novos dados detectados para anos: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+2025-06-05 17:27:50,463 [INFO] Iniciando verificação...
+
+2025-06-05 17:27:51,969 [INFO] Acessando página: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def
+2025-06-05 17:27:52,075 [INFO] Novos dados detectados para anos: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
