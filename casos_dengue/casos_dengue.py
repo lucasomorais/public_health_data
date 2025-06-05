@@ -2,7 +2,7 @@ import time
 import os, sys
 import re
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.data_utils import load_string_data, save_string_data, compare_data, clear_data_file
+from modules.data_utils import load_list_data, save_list_data, compare_data, clear_data_file
 from playwright.sync_api import sync_playwright
 from datetime import datetime
 
@@ -34,35 +34,37 @@ def fetch_data(page):
                 texto_limpo = re.split(r'\n|\*', texto)[0].strip()
                 lista_textos.append(texto_limpo)
         
-        print(f"Items encontrados: {lista_textos}")
         return lista_textos
     else:
         print("Elemento rodape_htm não encontrado")
         return []
 
 
+def download_casos_dengue(page):
+    
+
+
+
+
 def main():
+
     print(f"Running check at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     with sync_playwright() as p:
         page, browser = access_website(p)
         current_data = fetch_data(page)
+        browser.close()
 
-        if not current_data:
-            print("No data fetched. Exiting.")
-            browser.close()
-            return
-
-        stored_data = load_string_data(DATA_FILE)  or []
+        stored_data = load_list_data(DATA_FILE)
 
         differences = compare_data(current_data, stored_data)
 
         if differences:
             print("New data detected! Proceeding with download.")
-            fetch_data(page)
-            save_string_data(current_data, DATA_FILE)
+            print(f"Differences found: {differences}")
+            save_list_data(current_data, DATA_FILE)
         else:
-            print("No new data detected.")
+            print("No changes detected.")
 
         browser.close()
 
