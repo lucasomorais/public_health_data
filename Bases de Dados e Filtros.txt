@@ -1,0 +1,195 @@
+---------------------------------------------------------------------
+
+INMET - DADOS METEOROLÓGICOS
+
+https://portal.inmet.gov.br/dadoshistoricos
+(Dado de última atualização fica inserido ao final do rótulo do ano. Ex.: 'ANO 2025 (ATÉ 30/04/2025)' )
+
+
+---------------------------------------------------------------------
+
+
+DATASUS - Cobertura Vacinal
+
+https://infoms.saude.gov.br/extensions/SEIDIGI_DEMAS_VACINACAO_CALENDARIO_NACIONAL_COBERTURA_RESIDENCIA/SEIDIGI_DEMAS_VACINACAO_CALENDARIO_NACIONAL_COBERTURA_RESIDENCIA.html#
+(Dado de última atualização disponível fica na sessão intermediaria do Dash)
+Ex.: Atualização do painel em 03/06/2025 às 05:21:10, com dados contidos na Rede Nacional de Dados em Saúde (RNDS) referentes às doses aplicadas até o dia 01/04/25 às 00:00:00.'
+
+---------------------------------------------------------------------
+
+
+CASOS DENGUE
+1) Casos Prováveis (por ano) segundo Município de residência
+2) Casos Prováveis por Faixa Etária segundo Município de residência
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def
+(Dado de última atualização está no rodapé)
+
+---------------------------------------------------------------------
+
+ÓBITOS DENGUE
+1) Casos Prováveis por Evolução (Óbito pelo Agravo Notificado) segundo Município de residência
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def
+
+(Dado de última atualização está no rodapé)
+
+---------------------------------------------------------------------
+
+CASOS CHIKUNGUNYA
+1) Todos os casos por Ano 1º Sintoma(s) segundo Município de residência
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/chikunbr.def
+(Dado de última atualização está no rodapé)
+
+---------------------------------------------------------------------
+
+CASOS ZIKA VÍRUS 
+1) Todos os casos por Ano 1º Sintoma(s) segundo Município de residência
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/zikabr.def
+(Dado de última atualização está no rodapé)
+
+---------------------------------------------------------------------
+
+AIH APROVADAS
+1) AIH aprovadas por Ano processamento segundo Município
+	Procedimento: 0213010119 HISTOPATOLOGIA P/ IDENTIFICACAO DE DENGUE, 0213010330 IMUNOHISTOQUIMICA P/ IDENTIFICACAO DO VIRUS DA DENGUE, 0213010380 ISOLAMENTO DO VIRUS DA DENGUE, 0213010674 TESTE DE HIBRIDIZACAO IN SITU PARA IDENTIFICACAO DO VIRUS DA DENGUE, 0214010120 TESTE RAPIDO PARA DENGUE IGG/IGM, 0303010010 TRATAMENTO DE DENGUE CLASSICA, 0303010029 TRATAMENTO DE DENGUE HEMORRAGICA
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sih/cnv/qibr.def
+(Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Mar/2025'] exibido no campo 'Períodos Disponíveis)
+
+
+
+---------------------------------------------------------------------
+
+CUSTO DO MANEJO DA DENGUE
+
+1) Valor serviços hospitalares por Ano processamento segundo Município
+    Procedimento: 0213010119 HISTOPATOLOGIA P/ IDENTIFICACAO DE DENGUE, 0213010330 IMUNOHISTOQUIMICA P/ IDENTIFICACAO DO VIRUS DA DENGUE, 0213010380 ISOLAMENTO DO VIRUS DA DENGUE, 0213010674 TESTE       DE HIBRIDIZACAO IN SITU PARA IDENTIFICACAO DO VIRUS DA DENGUE, 0214010120 TESTE RAPIDO PARA DENGUE IGG/IGM, 0303010010 TRATAMENTO DE DENGUE CLASSICA, 0303010029 TRATAMENTO DE DENGUE HEMORRAGICA
+
+2) Valor serviços profissionais por Ano processamento segundo Município
+   Procedimento: 0213010119 HISTOPATOLOGIA P/ IDENTIFICACAO DE DENGUE, 0213010330 IMUNOHISTOQUIMICA P/ IDENTIFICACAO DO VIRUS DA DENGUE, 0213010380 ISOLAMENTO DO VIRUS DA DENGUE, 0213010674 TESTE DE    HIBRIDIZACAO IN SITU PARA IDENTIFICACAO DO VIRUS DA DENGUE, 0214010120 TESTE RAPIDO PARA DENGUE IGG/IGM, 0303010010 TRATAMENTO DE DENGUE CLASSICA, 0303010029 TRATAMENTO DE DENGUE HEMORRAGICA
+
+3) Valor total por Ano processamento segundo Município
+   Procedimento: 0213010119 HISTOPATOLOGIA P/ IDENTIFICACAO DE DENGUE, 0213010330 IMUNOHISTOQUIMICA P/ IDENTIFICACAO DO VIRUS DA DENGUE, 0213010380 ISOLAMENTO DO VIRUS DA DENGUE, 0213010674 TESTE DE    HIBRIDIZACAO IN SITU PARA IDENTIFICACAO DO VIRUS DA DENGUE, 0214010120 TESTE RAPIDO PARA DENGUE IGG/IGM, 0303010010 TRATAMENTO DE DENGUE CLASSICA, 0303010029 TRATAMENTO DE DENGUE HEMORRAGICA
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sih/cnv/qibr.def
+(Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Mar/2025'] exibido no campo 'Períodos Disponíveis)
+
+---------------------------------------------------------------------
+
+MEDICOS POR ESPECIALIDADE E MUNICIPIO
+
+1) Quantidade por Médicos segundo Município
+2) Quantidade Medicos por Atende no SUS segundo Município
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/prid02br.def
+(Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Abr/2025'] exibido no campo 'Períodos Disponíveis)
+
+---------------------------------------------------------------------
+
+PROFISSIONAIS DE SAÚDE
+
+1) Total por Profissionais selecionados segundo Município
+Profissionais selecionados: Enfermeiro, Auxiliar de Enfermagem, Técnico de Enfermagem
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/proc02br.def
+(Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Abr/2025'] exibido no campo 'Períodos Disponíveis)
+
+---------------------------------------------------------------------
+
+AGENTE COMUNITARIO DE SAUDE
+1) Total segundo Município
+Ocupações de Nível Elementar: AGENTE COMUNITÁRIO DE SAÚDE, Agente comunitário de saúde, AGENTE DE SAÚDE PÚBLICA
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/proc02br.def
+(Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Abr/2025'] exibido no campo 'Períodos Disponíveis)
+
+
+---------------------------------------------------------------------
+
+ESTABELECIMENTOS - CNES - PRECISAMOS REVER A BASE DE DADOS
+*** LUCAS FALAR COM O CAIO NO FINAL DE TUDO ***
+*** IGNORAR ESSA FONTE POR ENQUANTO ***
+
+CNES - ESTABELECIMENTOS POR TIPO - BRASIL
+Quantidade por Tipo de Estabelecimento segundo Município
+Período: Out/2023
+
+http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/estabbr.def
+
+
+FTP -- DATASUS CNES
+
+ftp://ftp.datasus.gov.br/cnes/
+
+
+---------------------------------------------------------------------
+
+IBGE - ASPECTOS SOCIAIS - ACESSO A INFORMAÇÃO
+
+EXISTENCIA DE TELEVISAO
+Tabela 7167 - Domicílios e Moradores, por situação do domicílio e existência de televisão no domicílio
+Variável - Distribuição percentual dos domicílios (%)
+https://sidra.ibge.gov.br/tabela/7167
+
+UTILIZACAO DE INTERNET
+Tabela 7307 - Domicílios e Moradores, por situação do domicílio e existência de utilização da internet no domicílio
+Variável - Distribuição percentual dos domicílios (%)
+https://sidra.ibge.gov.br/tabela/7307
+
+FUNCIONAMENTO DE REDE MÓVEL
+Tabela 7315 - Domicílios e Moradores, por situação do domicílio e funcionamento de serviço de rede móvel celular para telefonia ou Internet no domicílio
+Variável - Distribuição percentual dos domicílios (%)
+https://sidra.ibge.gov.br/tabela/7315
+
+---------------------------------------------------------------------
+
+IBGE - ASPECTOS SOCIAIS - DADOS DE ESCOLARIZAÇÃO
+
+ABSENTEÍSMO
+Tabela 7141 - Taxa ajustada de frequência escolar líquida, por sexo e faixa etária ideal por curso frequentado
+Variável - Taxa ajustada de frequência escolar líquida (%)
+https://sidra.ibge.gov.br/tabela/7141
+
+ANALFABETISMO
+Tabela 7113 - Taxa de analfabetismo das pessoas de 15 anos ou mais de idade, por sexo e grupo de idade
+Variável - Taxa de analfabetismo das pessoas de 15 anos ou mais de idade (%)
+https://sidra.ibge.gov.br/tabela/7113
+
+ESCOLARIZAÇÃO
+Tabela 7138 - Taxa de escolarização, por sexo e grupo de idade
+Variável - Taxa de escolarização (%)
+https://sidra.ibge.gov.br/tabela/7138
+
+
+---------------------------------------------------------------------
+
+SANEAMENTO BÁSICO - ASPECTOS SOCIAIS - SNIS/ABES
+
+FORMULAS: https://abes-dn.org.br/ranking-do-saneamento-2021/ *** IGNORAR ***
+
+TABELAS: http://app4.mdr.gov.br/serieHistorica/
+
+PRECISAMOS AVALIAR A POSSIBILIDADE DE NAVEGAR DENTRO DESSE APP4.MDR SERIE HISTORICA PARA CHECAR O ULTIMO ANO DE DADOS DISPONIVEIS
+
+
+---------------------------------------------------------------------
+
+
+POPULACAO
+Tabela 9514 - População residente, por sexo, idade e forma de declaração da idade
+
+https://sidra.ibge.gov.br/pesquisa/censo-demografico/demografico-2022/universo-populacao-por-idade-e-sexo
+https://sidra.ibge.gov.br/tabela/9514
+
+(Dado última atualização disponível juntamente do valor no seletor de ano ['atualizado em 22/12/2023'])
+
+---------------------------------------------------------------------
+
+
+DADOS PIB PER CAPITA 2021
+
+
+POR MUNICIPIO
+https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html?=&t=downloads
