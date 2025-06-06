@@ -1,0 +1,48 @@
+[
+  {
+    "timestamp": "2025-06-06T09:46:08.531405",
+    "changed": true,
+    "changed_years": [
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T11:33:05.256088",
+    "changed": false,
+    "changed_years": [],
+    "scripts": {
+      "casos_dengue_municipio": false
+    }
+  },
+  {
+    "timestamp": "2025-06-06T11:33:57.894249",
+    "changed": true,
+    "changed_years": [
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T13:25:08.145352",
+    "changed": false,
+    "changed_years": [],
+    "scripts": {
+      "casos_dengue_municipio": false
+    }
+  },
+  {
+    "timestamp": "2025-06-06T13:25:52.141210",
+    "changed": false,
+    "changed_years": [],
+    "scripts": {
+      "casos_dengue_municipio": false
+    }
+  }
+]

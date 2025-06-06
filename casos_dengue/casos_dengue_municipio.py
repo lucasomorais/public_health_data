@@ -6,11 +6,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 from modules.data_utils import load_dict_data, save_dict_data
+from modules.status import append_status_entry
 
-DATA_FILE = "casos_dengue/casos_dengue.json"
+DATA_FILE = "_tabnet_info/casos_dengue.json"
 
 def access_website(p):
-    browser = p.chromium.launch(headless=False)
+    browser = p.chromium.launch(headless=True)
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
 
@@ -104,7 +105,7 @@ def main():
 
     with sync_playwright() as p:
         # Carrega dados para detectar anos com mudanças
-        temp_browser = p.chromium.launch(headless=True)
+        temp_browser = p.chromium.launch(headless=False)
         temp_context = temp_browser.new_context()
         temp_page = temp_context.new_page()
         temp_page.goto("http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def")
@@ -117,6 +118,8 @@ def main():
         for ano, texto in current_data.items():
             if ano not in stored_data or stored_data[ano] != texto:
                 changed_years.append(ano)
+
+        append_status_entry(changed_years)
 
         if changed_years:
             print("Novos dados detectados para os anos:", changed_years)
@@ -139,6 +142,7 @@ def main():
             save_dict_data(stored_data, DATA_FILE)
         else:
             print("Nenhuma alteração detectada.\n")
+
 
 
 if __name__ == "__main__":
