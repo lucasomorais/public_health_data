@@ -4,7 +4,7 @@ from datetime import datetime
 from playwright.async_api import async_playwright
 from modules.data_utils import load_dict_data, save_dict_data
 
-DATA_FILE = "_tabnet_info/tabnet_data.json"
+DATA_FILE = "_tabnet_info/tabnet_chikungunya.json"
 
 async def download_casos_chikungunya(p, filtro, changed_years, download_dir, nome):
     browser = await p.chromium.launch(headless=True)
@@ -57,7 +57,7 @@ async def download_casos_chikungunya(p, filtro, changed_years, download_dir, nom
 
         os.makedirs(download_dir, exist_ok=True)
         hoje = datetime.today()
-        nome_arquivo = f"casos_chikungunya_{nome}_{ano}_{hoje.year}_{hoje.month:02d}_{hoje.day:02d}.csv"
+        nome_arquivo = f"{nome}_{ano}_{hoje.year}_{hoje.month:02d}_{hoje.day:02d}.csv"
         download_path = os.path.join(download_dir, nome_arquivo)
         await download.save_as(download_path)
         print(f"[INFO] Download salvo: {download_path}")
@@ -74,7 +74,7 @@ async def filtros_chikungunya(changed_years, current_data):
     """Process the changed years by downloading data and updating stored data."""
     async with async_playwright() as p:
         filtros = [
-            {"nome": "Casos Chikungunya", "filtro": "Município_de_residência", "download_dir": "casos_chikungunya/municipio_chikungunya_downloads/"} 
+            {"nome": "casos_chikungunya", "filtro": "Município_de_residência", "download_dir": "casos_chikungunya/municipio_chikungunya_downloads/"} 
         ]
         for config in filtros:
             await download_casos_chikungunya(

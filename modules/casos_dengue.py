@@ -4,7 +4,7 @@ from datetime import datetime
 from playwright.async_api import async_playwright
 from modules.data_utils import load_dict_data, save_dict_data
 
-DATA_FILE = "_tabnet_info/tabnet_data.json"
+DATA_FILE = "_tabnet_info/tabnet_dengue.json"
 
 async def download_casos_dengue(p, filtro, changed_years, download_dir, extra_filter, nome):
     browser = await p.chromium.launch(headless=True)
@@ -58,7 +58,7 @@ async def download_casos_dengue(p, filtro, changed_years, download_dir, extra_fi
 
         os.makedirs(download_dir, exist_ok=True)
         hoje = datetime.today()
-        nome_arquivo = f"casos_dengue_{nome}_{ano}_{hoje.year}_{hoje.month:02d}_{hoje.day:02d}.csv"
+        nome_arquivo = f"{nome}_{ano}_{hoje.year}_{hoje.month:02d}_{hoje.day:02d}.csv"
         download_path = os.path.join(download_dir, nome_arquivo)
         await download.save_as(download_path)
         print(f"[INFO] Download salvo: {download_path}")
@@ -75,9 +75,9 @@ async def filtros_dengue(changed_years, current_data):
     """Process the changed years by downloading data and updating stored data."""
     async with async_playwright() as p:
         filtros = [
-            {"nome": "Município de Residência", "filtro": "Município_de_residência", "download_dir": "casos_dengue/municipio_dengue_downloads/"} ,    #MUNICIPIO DE RESIDENCIA
-            {"nome": "Faixa Etária", "filtro": "Faixa_Etária", "download_dir": "casos_dengue/faixa_etaria_dengue_downloads/"},             #FAIXA ETARIA
-            {"nome": "Obitos Dengue", "filtro": "Município_de_residência", "download_dir": "casos_dengue/obitos_dengue_dengue_downloads/",   #ÓBITO PELO AGRAVO NOTIFICADO
+            {"nome": "municipio_de_residencia", "filtro": "Município_de_residência", "download_dir": "casos_dengue/municipio_dengue_downloads/"} ,    #MUNICIPIO DE RESIDENCIA
+            {"nome": "faixa_etaria", "filtro": "Faixa_Etária", "download_dir": "casos_dengue/faixa_etaria_dengue_downloads/"},             #FAIXA ETARIA
+            {"nome": "obitos_dengue", "filtro": "Município_de_residência", "download_dir": "casos_dengue/obitos_dengue_downloads/",   #ÓBITO PELO AGRAVO NOTIFICADO
                 "extra_filter": { 
                     "img_id": "fig49",
                     "select_id": "S49",

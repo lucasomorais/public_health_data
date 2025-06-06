@@ -130,8 +130,3 @@ def save_list_data(data, data_file):
             yaml.safe_dump(data, f, allow_unicode=True)
     except yaml.YAMLError as e:
         print(f"Error saving YAML file: {e}")
-
-
-
-
-
