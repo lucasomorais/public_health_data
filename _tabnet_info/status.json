@@ -1,8 +1,18 @@
 [
   {
-    "timestamp": "2025-06-06T09:46:08.531405",
+    "timestamp": "2025-06-06T14:58:15.831275",
     "changed": true,
     "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
       "2024",
       "2025"
     ],
@@ -11,17 +21,19 @@
     }
   },
   {
-    "timestamp": "2025-06-06T11:33:05.256088",
-    "changed": false,
-    "changed_years": [],
-    "scripts": {
-      "casos_dengue_municipio": false
-    }
-  },
-  {
-    "timestamp": "2025-06-06T11:33:57.894249",
+    "timestamp": "2025-06-06T14:58:51.050926",
     "changed": true,
     "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
       "2024",
       "2025"
     ],
@@ -30,7 +42,91 @@
     }
   },
   {
-    "timestamp": "2025-06-06T13:25:08.145352",
+    "timestamp": "2025-06-06T15:01:40.657749",
+    "changed": true,
+    "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:02:11.290917",
+    "changed": true,
+    "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:05:50.968177",
+    "changed": true,
+    "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:07:21.828742",
+    "changed": true,
+    "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:10:06.705804",
     "changed": false,
     "changed_years": [],
     "scripts": {
@@ -38,11 +134,63 @@
     }
   },
   {
-    "timestamp": "2025-06-06T13:25:52.141210",
+    "timestamp": "2025-06-06T15:10:22.486064",
+    "changed": true,
+    "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:11:31.990327",
+    "changed": true,
+    "changed_years": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:12:09.218036",
     "changed": false,
     "changed_years": [],
     "scripts": {
       "casos_dengue_municipio": false
+    }
+  },
+  {
+    "timestamp": "2025-06-06T15:12:23.083774",
+    "changed": true,
+    "changed_years": [
+      "2025"
+    ],
+    "scripts": {
+      "casos_dengue_municipio": true
     }
   }
 ]

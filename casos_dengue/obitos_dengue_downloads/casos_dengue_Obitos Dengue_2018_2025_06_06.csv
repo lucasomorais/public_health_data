@@ -1,0 +1,160 @@
+DENGUE - Notificações registradas no Sistema de Informação de Agravos de Notificação - Brasil
+Casos Prováveis por Município de residência
+Evolução: Óbito pelo agravo notificado
+Período:2018
+"Município de residência";"Casos_Prováveis"
+"110094 CUJUBIM";1
+"120030 FEIJO";2
+"120040 RIO BRANCO";1
+"130170 HUMAITA";1
+"130406 TABATINGA";1
+"130410 TAPAUA";1
+"150330 IGARAPE-MIRI";1
+"172100 PALMAS";1
+"210632 MARACACUME";1
+"210750 PACO DO LUMIAR";1
+"211130 SAO LUIS";1
+"220190 BOM JESUS";1
+"230428 EUSEBIO";1
+"230440 FORTALEZA";5
+"230535 ICAPUI";1
+"230765 MARACANAU";1
+"230940 NOVO ORIENTE";1
+"231025 PARAIPABA";1
+"231300 SOLONOPOLE";1
+"240020 ACU";1
+"240030 AFONSO BEZERRA";1
+"240260 CEARA-MIRIM";2
+"240310 CURRAIS NOVOS";1
+"240325 PARNAMIRIM";3
+"240350 ESPIRITO SANTO";1
+"240450 GUAMARE";1
+"240800 MOSSORO";2
+"240810 NATAL";12
+"240890 PARELHAS";1
+"240910 PASSA E FICA";1
+"240970 PEDRO AVELINO";1
+"241200 SAO GONCALO DO AMARANTE";1
+"241230 SAO JOSE DO CAMPESTRE";1
+"241250 SAO MIGUEL";1
+"241290 SAO TOME";1
+"241410 TENENTE ANANIAS";1
+"241440 TOUROS";1
+"250077 APARECIDA";1
+"250130 AROEIRAS";1
+"250153 BARAUNA";1
+"250160 BARRA DE SANTA ROSA";1
+"250400 CAMPINA GRANDE";4
+"250480 COREMAS";3
+"250600 ESPERANCA";1
+"250770 JUAZEIRINHO";2
+"251620 SOUSA";1
+"261020 PANELAS";1
+"261070 PAULISTA";1
+"261160 RECIFE";1
+"270510 MATRIZ DE CAMARAGIBE";1
+"270750 PORTO REAL DO COLEGIO";1
+"290390 BOM JESUS DA LAPA";1
+"290610 CANAPOLIS";1
+"290720 CASA NOVA";1
+"310390 ARAUJOS";1
+"310420 ARCOS";4
+"310450 ARINOS";1
+"311760 CONCEICAO DO PARA";1
+"311860 CONTAGEM";1
+"313420 ITUIUTABA";2
+"313720 LAGOA DA PRATA";1
+"314240 MOEMA";1
+"314330 MONTES CLAROS";1
+"316170 SAO GONCALO DO ABAETE";1
+"317010 UBERABA";1
+"320030 ALFREDO CHAVES";1
+"320313 JOAO NEIVA";1
+"320320 LINHARES";1
+"320370 MUNIZ FREIRE";1
+"320380 MUQUI";1
+"320420 PIUMA";1
+"320500 SERRA";2
+"320510 VIANA";1
+"320515 VILA PAVAO";2
+"320520 VILA VELHA";4
+"320530 VITORIA";1
+"330170 DUQUE DE CAXIAS";3
+"330205 ITALVA";1
+"330470 SANTO ANTONIO DE PADUA";1
+"330490 SAO GONCALO";1
+"350210 ANDRADINA";1
+"350550 BARRETOS";1
+"351880 GUARULHOS";1
+"352044 ILHA SOLTEIRA";1
+"353180 MONTE MOR";1
+"353740 PEREIRA BARRETO";1
+"354060 PORTO FELIZ";2
+"354800 SANTO ANTONIO DE POSSE";3
+"354980 SAO JOSE DO RIO PRETO";1
+"355030 SAO PAULO";1
+"410830 FOZ DO IGUACU";2
+"500230 BRASILANDIA";1
+"500830 TRES LAGOAS";3
+"510267 CAMPO VERDE";1
+"510622 NOVA MUTUM";1
+"510650 POCONE";1
+"510788 SERRA NOVA DOURADA";1
+"520013 ACREUNA";1
+"520110 ANAPOLIS";1
+"520140 APARECIDA DE GOIANIA";6
+"520170 ARAGARCAS";1
+"520430 CACU";1
+"520440 CAIAPONIA";2
+"520450 CALDAS NOVAS";3
+"520510 CATALAO";1
+"520540 CERES";1
+"520640 CRIXAS";1
+"520735 EDEALINA";1
+"520740 EDEIA";2
+"520870 GOIANIA";21
+"520910 GOIATUBA";1
+"520920 GUAPO";1
+"520995 INDIARA";2
+"521020 IPORA";2
+"521150 ITUMBIARA";1
+"521190 JATAI";2
+"521310 MINEIROS";5
+"521450 NEROPOLIS";1
+"521500 NOVA VENEZA";2
+"521740 PIRES DO RIO";1
+"521800 PORANGATU";2
+"521850 QUIRINOPOLIS";1
+"521880 RIO VERDE";6
+"521930 SANTA HELENA DE GOIAS";1
+"522045 SENADOR CANEDO";7
+"522140 TRINDADE";2
+"530010 BRASILIA";2
+"Total";221
+ Fonte: Ministério da Saúde/SVSA - Sistema de Informação de Agravos de Notificação - Sinan Net
+ Notas:
+ 
+ Para os casos prováveis foram incluídas todas notificações, exceto casos descartados.
+ As bases de dados de dengue aqui disponíveis compõem um banco único a partir de 2014, podendo haver pequenas divergências com os dados disponibilizados pelo CGARB
+ (Coordenação Geral de Vigilância de Arboviroses - CGARB) em sua série histórica, que para tal, realiza análise ano a ano, com a base congelada para cada ano analisado.
+ Para tabular os casos graves (classificação final igual a dengue com complicações, febre hemorrágica da dengue, síndrome do choque da dengue, dengue com sinais de
+ alarme e dengue grave) é necessário considerar também o critério de confirmação (laboratorial e clínico-epidemiológico).
+ A partir de 2020 o estado do Espírito Santo passou a utilizar o sistema e-SUS Vigilância em Saúde. Portanto, para os casos de Arboviroses urbanas do Espírito Santo
+ foram considerados apenas os dados disponibilizados pelo Sinan online (dengue e chikungunya) e Sinan Net (zika).
+ Períodos Disponíveis ou período - Correspondem aos anos de notificação dos casos e semana epidemiológica, em cada período pode apresentar notificações com data de
+ notificação do ano anterior (semana epidemiológica 52 ou 53) e posterior (semana epidemiológica 01).
+ Para cálculo da incidência recomenda-se utilizar locais de residência.
+ Dados de 2014 atualizados em 13/07/2015.
+ Dados de 2015 atualizados em 27/09/2016.
+ Dados de 2016 atualizados em 06/07/2017.
+ Dados de 2017 atualizados em 18/07/2018.
+ Dados de 2018 atualizados em 01/10/2019.
+ Dados de 2019 atualizados em 10/07/2020.
+ Dados de 2020 atualizados em 23/07/2021.
+ Dados de 2021 atualizados em 12/07/2022.
+ Dados de 2022 atualizados em 18/07/2023.
+ Dados de 2023 atualizados em 04/06/2024 às 07 horas.
+ Dados de 2024 atualizados em 26/05/2025 às 10:00 horas, sujeitos à revisão.
+ Dados de 2025 atualizados em 02/06/2025 às 03:00 horas, sujeitos à revisão.
+ * Dados disponibilizados no TABNET em junho de 2025.
+ 
