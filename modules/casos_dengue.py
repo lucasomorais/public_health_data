@@ -3,11 +3,12 @@ import os
 from datetime import datetime
 from playwright.async_api import async_playwright
 from modules.data_utils import load_dict_data, save_dict_data
+from modules.config import HEADLESS, DOWNLOADS_DIR
 
 DATA_FILE = "_tabnet_info/tabnet_dengue.json"
 
 async def download_casos_dengue(p, filtro, changed_years, download_dir, extra_filter, nome):
-    browser = await p.chromium.launch(headless=True)
+    browser = await p.chromium.launch(headless=HEADLESS)
     context = await browser.new_context(accept_downloads=True)
     page = await context.new_page()
     url = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def"
@@ -75,9 +76,9 @@ async def filtros_dengue(changed_years, current_data):
     """Process the changed years by downloading data and updating stored data."""
     async with async_playwright() as p:
         filtros = [
-            {"nome": "municipio_de_residencia", "filtro": "Município_de_residência", "download_dir": "casos_dengue/municipio_dengue_downloads/"} ,    #MUNICIPIO DE RESIDENCIA
-            {"nome": "faixa_etaria", "filtro": "Faixa_Etária", "download_dir": "casos_dengue/faixa_etaria_dengue_downloads/"},             #FAIXA ETARIA
-            {"nome": "obitos_dengue", "filtro": "Município_de_residência", "download_dir": "casos_dengue/obitos_dengue_downloads/",   #ÓBITO PELO AGRAVO NOTIFICADO
+            {"nome": "municipio_de_residencia", "filtro": "Município_de_residência", "download_dir": DOWNLOADS_DIR} ,    #MUNICIPIO DE RESIDENCIA
+            {"nome": "faixa_etaria", "filtro": "Faixa_Etária", "download_dir": DOWNLOADS_DIR},             #FAIXA ETARIA
+            {"nome": "obitos_dengue", "filtro": "Município_de_residência", "download_dir": DOWNLOADS_DIR,   #ÓBITO PELO AGRAVO NOTIFICADO
                 "extra_filter": { 
                     "img_id": "fig49",
                     "select_id": "S49",
@@ -91,7 +92,7 @@ async def filtros_dengue(changed_years, current_data):
                 p,
                 filtro=config["filtro"],
                 changed_years=changed_years,
-                download_dir=config["download_dir"],
+                download_dir=DOWNLOADS_DIR,
                 extra_filter=config.get("extra_filter"),
                 nome=config["nome"]
             )

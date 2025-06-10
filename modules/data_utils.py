@@ -3,6 +3,7 @@ import os
 import yaml
 import os
 import json
+from datetime import datetime
 
 ####################################
 
@@ -73,32 +74,36 @@ def clear_data_file(data_file):
 
 #  STRING DATA HANDLING FUNCTIONS
 
+import json
+
 def load_string_data(data_file):
-    """Load stored data from the YAML file."""
+    """Load stored data from the JSON file."""
     try:
         if os.path.exists(data_file):
             with open(data_file, "r", encoding="utf-8") as file:
-                data = yaml.safe_load(file)
-                # Garantir que é uma string, se não, converter ou retornar None
-                if isinstance(data, str):
-                    return data
-                else:
-                    # Se for None ou outro tipo, retornar None para forçar nova captura
-                    return None
+                data = json.load(file)
+                if isinstance(data, dict) and "data" in data:
+                    return data["data"]
         return None
-    except yaml.YAMLError as e:
-        print(f"Error loading YAML file: {e}")
+    except Exception as e:
+        print(f"Error loading JSON file: {e}")
         return None
 
 def save_string_data(data, data_file):
-    """Save data to the YAML file."""
+    """Save data and timestamp to a JSON file."""
     try:
-        # Salvar direto a string (data), não lista
-        with open(data_file, "w", encoding="utf-8") as f:
-            yaml.safe_dump(data, f, allow_unicode=True)
-    except yaml.YAMLError as e:
-        print(f"Error saving YAML file: {e}")
+        now = datetime.now()
+        timestamp = now.strftime("%d/%m/%Y - %H:%M")
 
+        obj = {
+            "data": data,
+            "saved_at": timestamp
+        }
+
+        with open(data_file, "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Error saving JSON file: {e}")
 
 
 ####################################

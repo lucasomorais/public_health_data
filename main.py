@@ -2,28 +2,24 @@ import asyncio
 import os
 from datetime import datetime
 from playwright.async_api import async_playwright
-from modules.data_utils import check_update_and_download
+from modules.json_utils import check_and_update
 from modules.casos_dengue import filtros_dengue
 from modules.casos_chikungunya import filtros_chikungunya
 from modules.casos_zika import filtros_zika
+from modules.aih_approved import check_and_update_aih
+from modules.config import HEADLESS, DOWNLOADS_DIR
 
 
 # Data files separados
 DENGUE_DATA_FILE = "_tabnet_info/tabnet_dengue.json"
 CHIKUNGUNYA_DATA_FILE = "_tabnet_info/tabnet_chikungunya.json"
 ZIKA_DATA_FILE = "_tabnet_info/tabnet_zika.json"
+AIH_DATA_FILE = "_tabnet_info/tabnet_aih.json"
 
 # Pastas necessárias
 folders = [
     "_tabnet_info/",
-    "casos_dengue/",
-    "casos_chikungunya/",
-    "casos_zika/",
-    "casos_dengue/obitos_dengue_downloads/",
-    "casos_dengue/faixa_etaria_dengue_downloads/",
-    "casos_dengue/municipio_dengue_downloads/",
-    "casos_chikungunya/municipio_chikungunya_downloads/",
-    "casos_chikungunya/municipio_zika_downloads/",
+    DOWNLOADS_DIR
 ]
 
 def ensure_dir():
@@ -36,11 +32,11 @@ async def main():
     ensure_dir()
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(headless=HEADLESS)
         context = await browser.new_context()
         page = await context.new_page()
 
-        await check_update_and_download(
+        await check_and_update(
             page,
             url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def",
             data_file=DENGUE_DATA_FILE,
@@ -48,7 +44,7 @@ async def main():
             doença_nome="dengue"
         )
 
-        await check_update_and_download(
+        await check_and_update(
             page,
             url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/chikunbr.def",
             data_file=CHIKUNGUNYA_DATA_FILE,
@@ -56,13 +52,15 @@ async def main():
             doença_nome="chikungunya"
         )
 
-        await check_update_and_download(
+        await check_and_update(
             page,
-            url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/chikunbr.def",
+            url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/zikabr.def",
             data_file=ZIKA_DATA_FILE,
             filtro_func=filtros_zika,
             doença_nome="zika"
         )
+
+        await check_and_update_aih()
 
         await browser.close()
 
