@@ -3,11 +3,12 @@ import os
 from datetime import datetime
 from playwright.async_api import async_playwright
 from modules.json_utils import check_and_update
-from modules.casos_dengue import filtros_dengue
-from modules.casos_chikungunya import filtros_chikungunya
-from modules.casos_zika import filtros_zika
-from modules.aih_approved import check_and_update_aih
 from modules.config import HEADLESS, DOWNLOADS_DIR
+from scripts.casos_dengue import filtros_dengue
+from scripts.casos_chikungunya import filtros_chikungunya
+from scripts.casos_zika import filtros_zika
+from scripts.aih_approved import check_and_update_aih
+
 
 
 # Data files separados

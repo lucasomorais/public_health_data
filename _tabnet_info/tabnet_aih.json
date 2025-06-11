@@ -1,8 +1,5 @@
 {
   "2025": {
-    "04": {
-      "baixado": true
-    },
     "03": {
       "baixado": true
     },
@@ -10,6 +7,9 @@
       "baixado": true
     },
     "01": {
+      "baixado": true
+    },
+    "04": {
       "baixado": true
     }
   },

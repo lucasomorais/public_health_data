@@ -13,38 +13,6 @@ DEFAULT_SCRIPTS = [
     "casos_zika.py"
 ]
 
-########## STATUS LOG FUNCTIONS ##########
-def load_status_log():
-    if not os.path.exists(STATUS_FILE):
-        return []
-    with open(STATUS_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def save_status_log(log_data):
-    with open(STATUS_FILE, "w", encoding="utf-8") as f:
-        json.dump(log_data, f, indent=2, ensure_ascii=False)
-
-def append_status_entry(changed_years):
-    timestamp = datetime.now().isoformat()
-    changed = bool(changed_years)
-
-    entry = {
-        "timestamp": timestamp,
-        "changed": changed,
-        "changed_years": changed_years,
-        "scripts": {key: changed for key in DEFAULT_SCRIPTS}
-    }
-
-    log = load_status_log()
-    log.append(entry)
-    save_status_log(log)
-
-def get_latest_status():
-    log = load_status_log()
-    if log:
-        return log[-1]
-    return None
-
 
 ########## FETCH DATA ##########
 
@@ -106,8 +74,6 @@ async def check_and_update(page, url, data_file, filtro_func, doença_nome):
             changed_years.append(ano)
         else:
             print(f"    → ✅ Sem alterações detectadas no ano {ano}")
-
-    append_status_entry(changed_years)
 
     if changed_years:
         print(f"\n[RESULTADO] Novos dados de {doença_nome} detectados para os anos: {changed_years}")
