@@ -7,8 +7,7 @@ from modules.config import HEADLESS, DOWNLOADS_DIR
 from scripts.casos_dengue import filtros_dengue
 from scripts.casos_chikungunya import filtros_chikungunya
 from scripts.casos_zika import filtros_zika
-from scripts.aih_approved import check_and_update_aih
-
+from scripts.aih_approved import check_all_filtros_aih
 
 
 # Data files separados
@@ -37,31 +36,31 @@ async def main():
         context = await browser.new_context()
         page = await context.new_page()
 
-        await check_and_update(
-            page,
-            url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def",
-            data_file=DENGUE_DATA_FILE,
-            filtro_func=filtros_dengue,
-            doença_nome="dengue"
-        )
+        # await check_and_update(
+        #     page,
+        #     url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/denguebbr.def",
+        #     data_file=DENGUE_DATA_FILE,
+        #     filtro_func=filtros_dengue,
+        #     doença_nome="dengue"
+        # )
 
-        await check_and_update(
-            page,
-            url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/chikunbr.def",
-            data_file=CHIKUNGUNYA_DATA_FILE,
-            filtro_func=filtros_chikungunya,
-            doença_nome="chikungunya"
-        )
+        # await check_and_update(
+        #     page,
+        #     url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/chikunbr.def",
+        #     data_file=CHIKUNGUNYA_DATA_FILE,
+        #     filtro_func=filtros_chikungunya,
+        #     doença_nome="chikungunya"
+        # )
 
-        await check_and_update(
-            page,
-            url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/zikabr.def",
-            data_file=ZIKA_DATA_FILE,
-            filtro_func=filtros_zika,
-            doença_nome="zika"
-        )
+        # await check_and_update(
+        #     page,
+        #     url="http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/zikabr.def",
+        #     data_file=ZIKA_DATA_FILE,
+        #     filtro_func=filtros_zika,
+        #     doença_nome="zika"
+        # )
 
-        await check_and_update_aih()
+        await check_all_filtros_aih()
 
         await browser.close()
 

@@ -4,8 +4,6 @@ from playwright.async_api import async_playwright
 from modules.data_utils import load_dict_data, save_dict_data
 from modules.config import HEADLESS, DOWNLOADS_DIR
 
-DATA_FILE = "_tabnet_info/tabnet_aih.json"
-
 month_map = {
     "Jan": "01", "Fev": "02", "Mar": "03", "Abr": "04", "Mai": "05", "Jun": "06",
     "Jul": "07", "Ago": "08", "Set": "09", "Out": "10", "Nov": "11", "Dez": "12"
@@ -19,9 +17,7 @@ async def extrair_anos_meses(p, filtro):
     await page.goto(url)
     print(f"[INFO] Acessando página para extrair anos/meses: {url}")
 
-    select_mun_loc = page.locator('select#L')
-    await select_mun_loc.wait_for()
-    await select_mun_loc.select_option(value=filtro)
+    await page.locator('select#L').select_option(value=filtro)
     await page.wait_for_timeout(500)
 
     select_ano = page.locator('select#A')
@@ -49,23 +45,23 @@ async def extrair_anos_meses(p, filtro):
     print(f"[INFO] Extração concluída: anos encontrados: {list(ano_mes_dict.keys())}")
     return ano_mes_dict
 
-async def download_casos_aih(p, filtro, current_data, stored_data, download_dir, nome):
+async def download_casos_aih(p, filtro_L, filtro_C, filtros_I, current_data, stored_data, download_dir, nome):
     browser = await p.chromium.launch(headless=HEADLESS)
     context = await browser.new_context(accept_downloads=True)
     page = await context.new_page()
     url = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sih/cnv/qibr.def"
     await page.goto(url)
-    print(f"[INFO] Acessando página para filtro '{filtro}': {url}")
+    print(f"[INFO] Acessando página: {url}")
 
-    select_mun_loc = page.locator('select#L')
-    await select_mun_loc.wait_for()
-    await select_mun_loc.select_option(value=filtro)
+    await page.locator('select#L').select_option(value=filtro_L)
+    await page.locator('select#C').select_option(value=filtro_C)
     await page.wait_for_timeout(500)
+
+    await page.locator('select#I').select_option(value=filtros_I)
 
     select_ano = page.locator('select#A')
     await select_ano.wait_for()
-    options = await select_ano.locator('option').all()
-    opcoes_site = [(await opt.text_content()).strip() for opt in options]
+    opcoes_site = [(await opt.text_content()).strip() for opt in await select_ano.locator('option').all()]
 
     for ano, meses in current_data.items():
         if ano not in stored_data:
@@ -121,28 +117,69 @@ async def download_casos_aih(p, filtro, current_data, stored_data, download_dir,
     await browser.close()
     print(f"[INFO] Concluído filtro '{nome}' e navegador fechado.\n")
 
-async def check_and_update_aih():
-    stored_data = load_dict_data(DATA_FILE)
-
+async def check_and_update_aih_por_filtro(config):
+    stored_data = load_dict_data(config["json_file"])
     async with async_playwright() as p:
-        current_data = await extrair_anos_meses(p, filtro="Município")
+        current_data = await extrair_anos_meses(p, filtro=config["filtro_L"])
 
         for ano, meses in current_data.items():
             if ano not in stored_data:
                 stored_data[ano] = {}
             for mes in meses:
                 if mes not in stored_data[ano]:
-                    print(f"[INFO] Novo mês detectado: {mes}/{ano}, adicionando como 'baixado: false'")
                     stored_data[ano][mes] = {"baixado": False}
 
         await download_casos_aih(
             p,
-            filtro="Município",
+            filtro_L=config["filtro_L"],
+            filtro_C=config["filtro_C"],
+            filtros_I=config["filtros_I"],
             current_data=current_data,
             stored_data=stored_data,
-            download_dir=DOWNLOADS_DIR,
-            nome="aih_approved"
+            download_dir=config["download_dir"],
+            nome=config["nome"]
         )
 
-    save_dict_data(stored_data, DATA_FILE)
-    print(f"[INFO] Dados armazenados atualizados.")
+    save_dict_data(stored_data, config["json_file"])
+
+async def check_all_filtros_aih():
+    filtros = [
+        {
+            "nome": "aih_municipio_registro",
+            "filtro_L": "Município",
+            "filtro_C": "Ano_processamento",
+            "filtros_I": "AIH_aprovadas",
+            "json_file": "_tabnet_info/aih_municipio_registro.json",
+            "download_dir": DOWNLOADS_DIR
+        },
+        {
+            "nome": "servicos_hospitalares",
+            "filtro_L": "Município",
+            "filtro_C": "Ano_processamento",
+            "filtros_I": "Valor_serviços_hospitalares",
+            "json_file": "_tabnet_info/servicos_hospitalares.json",
+            "download_dir": DOWNLOADS_DIR
+        },
+        {
+            "nome": "servicos_profissionais",
+            "filtro_L": "Município",
+            "filtro_C": "Ano_processamento",
+            "filtros_I": "Valor_serviços_profissionais",
+            "json_file": "_tabnet_info/servicos_profissionais.json",
+            "download_dir": DOWNLOADS_DIR
+        },
+        {
+            "nome": "servicos_valor_total",
+            "filtro_L": "Município",
+            "filtro_C": "Ano_processamento",
+            "filtros_I": "Valor_total",
+            "json_file": "_tabnet_info/servicos_valor_total.json",
+            "download_dir": DOWNLOADS_DIR
+        }
+    ]
+
+    for config in filtros:
+        await check_and_update_aih_por_filtro(config)
+
+
+
