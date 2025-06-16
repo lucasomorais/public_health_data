@@ -1,20 +1,7 @@
-import json
-import os
 import re
-from datetime import datetime
 from modules.data_utils import load_dict_data
 
-
 STATUS_FILE = "_tabnet_info/status.json"
-
-DEFAULT_SCRIPTS = [
-    "casos_dengue.py",
-    "casos_chikungunya.py",
-    "casos_zika.py"
-]
-
-
-########## FETCH DATA ##########
 
 async def fetch_data(page, url):
     await page.goto(url)
@@ -38,15 +25,13 @@ async def fetch_data(page, url):
                 dict_textos[ano] = texto_limpo
     return dict_textos
 
-########## CHECK IF DATA HAS CHANGED ##########
-
 def extract_date(texto):
     """Extrai a primeira data no formato dd/mm/aaaa de um texto."""
     match = re.search(r'\d{2}/\d{2}/\d{4}', texto)
     return match.group(0) if match else None
 
-async def check_and_update(page, url, data_file, filtro_func, doença_nome):
-    print(f"\n=== Iniciando verificação de atualização para {doença_nome} ===")
+async def check_and_update(page, url, data_file, filtro_func, filter_name):
+    print(f"\n=== Iniciando verificação de atualização para {filter_name} ===")
     print(f"[INFO] Carregando dados da página: {url}")
     
     data = await fetch_data(page, url)
@@ -76,11 +61,8 @@ async def check_and_update(page, url, data_file, filtro_func, doença_nome):
             print(f"    → ✅ Sem alterações detectadas no ano {ano}")
 
     if changed_years:
-        print(f"\n[RESULTADO] Novos dados de {doença_nome} detectados para os anos: {changed_years}")
+        print(f"\n[RESULTADO] Novos dados detectados para os anos: {changed_years}")
         await filtro_func(changed_years, data)
-        print(f"[SUCESSO] Dados de {doença_nome} atualizados com sucesso.\n")
+        print(f"[SUCESSO] Dados de {filter_name} atualizados com sucesso.\n")
     else:
-        print(f"[RESULTADO] Nenhuma alteração de {doença_nome} detectada.\n")
-
-#########################
-
+        print(f"[RESULTADO] Nenhuma alteração de {filter_name} detectada.\n")

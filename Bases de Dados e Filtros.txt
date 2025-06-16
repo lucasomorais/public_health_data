@@ -93,7 +93,7 @@ http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/prid02br.def
 PROFISSIONAIS DE SAÚDE
 
 1) Total por Profissionais selecionados segundo Município
-Profissionais selecionados: Enfermeiro, Auxiliar de Enfermagem, Técnico de Enfermagem
+Profissionais selecionados: Enfermeiro, Auxiliar de Enfermagem, Técnico de Enfermagem         ++++++++++++++++++++++++++++++++++++
 
 http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/proc02br.def
 (Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Abr/2025'] exibido no campo 'Períodos Disponíveis)
@@ -102,7 +102,7 @@ http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/proc02br.def
 
 AGENTE COMUNITARIO DE SAUDE
 1) Total segundo Município
-Ocupações de Nível Elementar: AGENTE COMUNITÁRIO DE SAÚDE, Agente comunitário de saúde, AGENTE DE SAÚDE PÚBLICA
+Ocupações de Nível Elementar: AGENTE COMUNITÁRIO DE SAÚDE, Agente comunitário de saúde, AGENTE DE SAÚDE PÚBLICA     ############ COnferir com o Caio 
 
 http://tabnet.datasus.gov.br/cgi/tabcgi.exe?cnes/cnv/proc02br.def
 (Dado de última atualização NÃO está no rodapé, teremos que pegar o valor ['Abr/2025'] exibido no campo 'Períodos Disponíveis)

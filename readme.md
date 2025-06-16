@@ -1,106 +1,126 @@
-# Projetos de Automação de Dados - Documentação
+# Sistema de Download de Dados de Saúde do TabNet
 
-Este repositório contém três scripts de automação para extração, comparação e download de dados públicos de diferentes fontes brasileiras. Todos eles utilizam funções comuns de manipulação de dados (load/save/compare) definidas no módulo `data_utils`.
+Este projeto automatiza o download de dados de saúde do site TabNet do DATASUS usando Playwright. Ele verifica dados já baixados, baixa apenas os novos ou atualizados em formato CSV e organiza os arquivos em um diretório específico. Suporta múltiplos tipos de dados, como casos de dengue, chikungunya, zika, AIH aprovadas, médicos por especialidade e agentes médicos.
 
----
+## Funcionalidades Principais
 
-## Módulo `data_utils`
+- Verifica dados disponíveis no site contra os armazenados localmente.
+- Baixa apenas dados novos ou atualizados, evitando duplicatas.
+- Organiza os arquivos CSV em um diretório dedicado.
+- Usa JSONs para controle de versões e períodos baixados.
 
-Este módulo contém funções genéricas para carregar, salvar, limpar e comparar dados em diferentes formatos: JSON, YAML com listas e strings. É utilizado pelos scripts para armazenar dados localmente e detectar mudanças entre execuções.
+## Requisitos
 
-### Funções principais
+- Python 3.7 ou superior
+- Playwright
+- PyYAML
 
-- **load_dict_data(data_file)**  
-  Carrega dados de um arquivo JSON e retorna um dicionário. Retorna `{}` se não existir ou ocorrer erro.
+## Instalação
 
-- **save_dict_data(data, data_file)**  
-  Salva um dicionário em arquivo JSON formatado.
+1. Clone o repositório:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   ```
+2. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Execute o programa:
+   ```bash
+   python main.py
+   ```
 
-- **load_list_data(data_file)**  
-  Carrega uma lista armazenada em YAML. Retorna lista vazia se não existir ou erro.
+## Estrutura do Projeto
 
-- **save_list_data(data, data_file)**  
-  Salva uma lista em arquivo YAML.
+- **`main.py`**: Ponto de entrada que coordena a execução.
+- **`scripts/`**: Scripts específicos para cada tipo de dado (ex.: `casos_dengue.py`).
+- **`modules/`**: Módulos utilitários (ex.: `json_utils.py`, `config.py`).
+- **`utils.py`**: Funções reutilizáveis para navegação e download.
+- **`_tabnet_info/`**: Diretório para JSONs de controle.
+- **`downloads/`**: Diretório para os arquivos CSV baixados.
 
-- **load_string_data(data_file)**  
-  Carrega uma string armazenada em YAML. Retorna `None` se não existir ou erro.
+## Detalhes dos Módulos e Funções
 
-- **save_string_data(data, data_file)**  
-  Salva uma string em arquivo YAML.
+### `main.py`
+- **Localização**: Raiz do projeto
+- **Descrição**: Script principal que inicia o Playwright e gerencia a execução dos processos de download.
+- **Funções**:
+  - `ensure_dir()`: Cria os diretórios `_tabnet_info/` e `downloads/` se não existirem.
+  - `main()`: Função assíncrona que inicia o Playwright, cria um contexto de navegador e chama funções de processamento de dados (ex.: `check_all_filtros_medical_agent()`).
 
-- **compare_data(new_data, stored_data)**  
-  Compara dados novos com dados armazenados e retorna as diferenças (lista vazia se igual).
+### `scripts/casos_dengue.py`
+- **Localização**: Pasta `scripts/`
+- **Descrição**: Processa dados de casos de dengue.
+- **Funções**:
+  - `processar_filtros_dengue(changed_years, current_data)`: Extrai e baixa dados de dengue para os anos/meses especificados, atualizando o JSON de controle.
 
-- **clear_data_file(data_file)**  
-  Limpa o conteúdo do arquivo indicado.
+### `scripts/casos_chikungunya.py`
+- **Localização**: Pasta `scripts/`
+- **Descrição**: Processa dados de casos de chikungunya.
+- **Funções**:
+  - `processar_filtros_chikungunya(changed_years, current_data)`: Similar ao script de dengue, mas para chikungunya.
 
----
+### `scripts/casos_zika.py`
+- **Localização**: Pasta `scripts/`
+- **Descrição**: Processa dados de casos de zika.
+- **Funções**:
+  - `processar_filtros_zika(changed_years, current_data)`: Similar ao script de dengue, mas para zika.
 
-## Script 1: Casos de Dengue (`casos_dengue.py`)
+### `scripts/aih_approved.py`
+- **Localização**: Pasta `scripts/`
+- **Descrição**: Gerencia dados de AIH aprovadas.
+- **Funções**:
+  - `check_and_update_aih_por_filtro(config)`: Verifica e baixa dados de AIH para um filter específico.
+  - `check_all_filtros_aih()`: Coordena a execução para todos os filters de AIH.
 
-Automatiza a extração e download de dados anuais de casos de dengue do site do Datasus.
+### `scripts/ftmedicSpecialty.py`
+- **Localização**: Pasta `scripts/`
+- **Descrição**: Gerencia dados de médicos por especialidade.
+- **Funções**:
+  - `check_and_update_medicos_por_filtro(config)`: Verifica e baixa dados para um filter de médicos.
+  - `check_all_filtros_medicos()`: Coordena a execução para todos os filters de médicos.
 
-### Fluxo principal
+### `scripts/ftmedicalAgent.py`
+- **Localização**: Pasta `scripts/`
+- **Descrição**: Gerencia dados de agentes médicos (ativo por padrão).
+- **Funções**:
+  - `check_and_update_medical_agent(config)`: Verifica e baixa dados para um filter de agentes médicos.
+  - `check_all_filtros_medical_agent()`: Coordena a execução para todos os filters de agentes médicos.
 
-1. **Acesso ao site:** navega até o formulário de casos de dengue.
-2. **Extração de dados:** lê textos de rodapé que indicam os dados disponíveis por ano.
-3. **Comparação:** verifica anos com dados novos ou atualizados em relação ao JSON salvo.
-4. **Download:** para cada ano com dados novos, seleciona o ano no formulário, abre uma nova aba, baixa CSV, salva localmente e fecha a aba.
-5. **Armazena** as informações atualizadas em JSON.
+### `modules/json_utils.py`
+- **Localização**: Pasta `modules/`
+- **Descrição**: Funções para buscar e gerenciar dados do site.
+- **Funções**:
+  - `fetch_data(page, url)`: Extrai informações do rodapé do TabNet.
+  - `extract_date(texto)`: Extrai datas de textos do site.
+  - `check_and_update(page, url, data_file, filtro_func, disease_name)`: Compara dados locais com o site e atualiza se necessário, chamando a função de filter correspondente.
 
-### Tecnologias
+### `modules/config.py`
+- **Localização**: Pasta `modules/`
+- **Descrição**: Define configurações globais.
+- **Variáveis**:
+  - `HEADLESS`: Define se o navegador roda sem interface gráfica (True/False).
+  - `DOWNLOADS_DIR`: Caminho para o diretório de downloads.
 
-- Playwright (navegação e download)
-- JSON para armazenamento de metadados
-- Regex para limpeza e extração de texto
+### `modules/data_utils.py`
+- **Localização**: Pasta `modules/`
+- **Descrição**: Funções utilitárias para manipulação de dados.
+- **Funções**:
+  - Carrega e salva dados em JSON e YAML.
+  - Compara e atualiza informações entre dados locais e do site.
 
----
+### `utils.py`
+- **Localização**: Raiz do projeto
+- **Descrição**: Centraliza funções reutilizáveis.
+- **Funções**:
+  - `start_playwright()`: Inicia o Playwright e retorna um contexto de navegador.
+  - `extract_years_months(p, url, filtro_L, filtro_C=None, filtros_I=None)`: Extrai anos e meses disponíveis no TabNet para um filter.
+  - `download_disease_data(p, url, config, current_data, stored_data=None, extra_filter=None)`: Navega no site, aplica filters e baixa os dados em CSV.
 
-## Script 2: Cobertura Vacinal (`cobertura_vacinal.py`)
+## Como Funciona
 
-Automatiza a verificação e download do painel de cobertura vacinal no site do Datasus.
+1. O `main.py` cria diretórios e inicia o Playwright.
+2. Chama funções como `check_all_filtros_medical_agent()` para processar cada tipo de dado.
+3. Essas funções verificam os períodos disponíveis no site, comparam com os JSONs locais e baixam os dados pendentes via `download_disease_data()`.
+4. Os CSVs são salvos em `downloads/` e os JSONs em `_tabnet_info/` são atualizados.
 
-### Fluxo principal
-
-1. **Acesso ao site:** abre o painel de cobertura vacinal.
-2. **Espera o carregamento:** aguarda o fim da animação de carregamento (preloader).
-3. **Extração da data de atualização:** captura a data exibida no painel via regex.
-4. **Comparação:** verifica se a data atual difere da última salva no arquivo YAML.
-5. **Download:** caso haja dados novos, acessa a aba correta e baixa o arquivo CSV, salvando com nome baseado na data atual.
-6. **Armazena** a nova data no arquivo YAML.
-
-### Tecnologias
-
-- Playwright para interação web e download
-- YAML para armazenamento da data de atualização
-- Regex para captura da data no texto
-
----
-
-## Script 3: Dados Meteorológicos INMET (`inmet_dados.py`)
-
-Coleta dados históricos do portal do INMET via scraping simples e detecta atualizações.
-
-### Fluxo principal
-
-1. **Requisição HTTP:** busca o HTML da página de dados históricos do INMET.
-2. **Parsing HTML:** usa BeautifulSoup para extrair o texto dos artigos listados.
-3. **Comparação:** verifica se os dados atuais diferem dos armazenados no YAML.
-4. **Atualização:** se houver novidades, limpa o arquivo e salva os novos dados.
-5. **Log:** imprime no console as mudanças detectadas.
-
-### Tecnologias
-
-- Requests para HTTP
-- BeautifulSoup para parsing HTML
-- YAML para armazenamento de listas
-
----
-
-## Considerações
-
-Os scripts são independentes, mas compartilham o módulo data_utils para persistência e comparação.
-
-O uso de arquivos JSON ou YAML depende do tipo de dado (dicionário, lista ou string).
-
-O foco é detectar mudanças para evitar downloads ou operações desnecessárias.
